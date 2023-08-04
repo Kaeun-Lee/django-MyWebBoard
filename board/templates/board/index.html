@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            background-color: #f0f2f5;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #9c88ff; /* 배경색상 */
+            color: white;
+        }
+
+        td:first-child {
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #dce0f0; /* 음영 색상 */
+        }
+
+        #new-post-btn {
+            display: inline-block;
+            background-color: #9c88ff; /* 배경색 */
+            color: white;
+            text-align: center;
+            padding: 8px 16px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            position: fixed;
+            top: 130px;
+            right: 160px;
+            border-radius: 4px;
+        }
+
+        #new-post-btn:hover {
+            background-color: #7f70db; /* 호버 시 배경색 */
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>글 제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>좋아요</th>
+        <th>댓글 수</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- 작성 글 목록 -->
+    {% if post_list %}
+        {% for post in post_list %}
+            <tr>
+                <td style="text-align:center;">{{ post.id }}</td>
+                <td style="text-align:left;">{{ post.title }}</td>
+                <td>{{ post.writer }}</td>
+                <td>{{ post.created_date|date:'Y년 m월 d일 H시 m분' }}</td>
+                <td>{{ post.like_count }}</td>
+                <td>{{ post.comment_count }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <td style="text-align:left;">등록된 게시글이 없습니다.</td>
+    {% endif %}
+    <!-- 작성 글 목록 종료 -->
+    </tbody>
+</table>
+
+<a href="#" id="new-post-btn">새 글쓰기</a>
+
+</body>
+</html>
