@@ -41,7 +41,7 @@
         }
 
         tr:hover {
-            background-color: #dce0f0;
+            background-color: #dce0f0; /* 음영 색상 */
         }
 
         #new-post-btn {
@@ -68,8 +68,8 @@
 </head>
 <body>
 <h2>게시글 상세 조회</h2>
-번호 : {{ post_detail.id }}<br>
-작성자 : {{ post_detail.writer }}<br>
+글 번호 : {{ post_detail.id }}<br>
+글 작성자 : {{ post_detail.writer }}<br>
 글 제목 : {{ post_detail.title }}<br>
 글 내용 : {{ post_detail.content }}<br>
 좋아요 : {{ post_detail.like_count }}
@@ -96,7 +96,11 @@
             <td>{{ comment.created_date|date:'Y년 m월 d일 H시 m분' }}</td>
         </tr>
     {% endfor %}
-
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td>
+        <button class="new-post-btn">댓글 작성</button>
+    </td>
     <!-- 댓글 목록 종료 -->
     </tbody>
 </table>

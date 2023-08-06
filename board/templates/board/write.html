@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post_detail.title }}</title>
+
+</head>
+<body>
+<h1>새 글쓰기</h1>
+<form action="{% url 'board:create_post' %}" method="post">
+    {% csrf_token %}
+    <div>
+        <label for="writer">글 작성자 : </label>
+        <input type="text" name="writer" id="writer">
+    </div>
+    <br>
+    <div>
+        <label for="title">글 제목 : </label>
+        <input type="text" name="title" id="title">
+    </div>
+    <br>
+    <div>
+        <label for="content">글 내용 : </label>
+        <textarea name="content" id="content" cols="30" rows="5"></textarea>
+    </div>
+    <br>
+    <input type="submit" value="저장">
+    <input type="button" value="취소" onclick="location.href='{% url "board:index" %}';">
+</form>
+</body>
+</html>
